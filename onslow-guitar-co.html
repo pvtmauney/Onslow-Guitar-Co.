@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onslow Guitar Co. — Handbuilt in Onslow County, NC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,430;0,9..144,560;1,9..144,340;1,9..144,430&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF7F0;
+    --panel:#FFFFFF;
+    --ink:#241B12;
+    --ink-dim:rgba(36,27,18,.64);
+    --ink-faint:rgba(36,27,18,.4);
+    --line:rgba(36,27,18,.12);
+    --amber:#B0752B;
+    --amber-deep:#8F5D1F;
+    --amber-wash:#F3E7D3;
+    --ok:#3E6B3A;
+    --danger:#9C3A2E;
+    --maxw:1080px;
+    --display:'Fraunces',serif;
+    --body:'Karla',sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+    --radius:8px;
+    --shadow:0 1px 2px rgba(36,27,18,.05),0 8px 28px rgba(36,27,18,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:#fff}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--amber);outline-offset:2px;border-radius:3px;
+  }
+  img,video,iframe{max-width:100%;display:block}
+  button{font-family:inherit;cursor:pointer}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* string rule */
+  .strings svg{display:block;width:100%;height:22px}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(250,247,240,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+  .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;min-width:0}
+  .brand .mark{font-family:var(--display);font-weight:560;font-size:1.25rem;white-space:nowrap}
+  .brand .est{font-family:var(--mono);font-size:.62rem;color:var(--ink-faint);letter-spacing:.14em}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--ink-dim);transition:color .2s}
+  .nav-links a:hover{color:var(--amber)}
+  .nav-cta{
+    font-family:var(--mono);font-size:.74rem;text-decoration:none;color:#fff;
+    background:var(--ink);padding:9px 15px;border-radius:5px;white-space:nowrap;transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--amber)}
+  @media(max-width:780px){.nav-links{display:none}.brand .est{display:none}}
+
+  /* hero */
+  .hero{padding:88px 0 76px;border-bottom:1px solid var(--line)}
+  .kicker{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--amber);
+    text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  }
+  .kicker::before{content:"";width:30px;height:1px;background:var(--amber)}
+  h1{
+    font-family:var(--display);font-weight:340;
+    font-size:clamp(2.4rem,5.2vw,3.9rem);line-height:1.08;letter-spacing:-.01em;max-width:19ch;
+  }
+  h1 em{font-style:italic;color:var(--amber)}
+  .lede{margin-top:24px;max-width:52ch;color:var(--ink-dim);font-size:1.05rem}
+  .hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:700;font-size:.88rem;
+    padding:13px 24px;border-radius:6px;border:1px solid transparent;transition:all .2s;background:none;
+  }
+  .btn-solid{background:var(--ink);color:#fff}
+  .btn-solid:hover{background:var(--amber)}
+  .btn-ghost{border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .btn-amber{background:var(--amber);color:#fff}
+  .btn-amber:hover{background:var(--amber-deep)}
+
+  section{padding:84px 0}
+  .sec-head{margin-bottom:44px;max-width:62ch}
+  .sec-head .kicker{margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:430;font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.12}
+  .sec-head p{margin-top:14px;color:var(--ink-dim)}
+
+  /* builders */
+  #builders{background:#fff;border-bottom:1px solid var(--line)}
+  .builder-list{display:flex;flex-direction:column;gap:36px}
+  .builder{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .builder-top{display:grid;grid-template-columns:340px 1fr;min-height:300px}
+  .builder-photo{
+    background:var(--amber-wash);position:relative;min-height:240px;
+  }
+  .builder-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .builder-photo .placeholder{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    color:var(--amber);font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  }
+  .builder-info{padding:34px 36px 30px}
+  .builder-info .county{
+    font-family:var(--mono);font-size:.68rem;color:var(--amber);letter-spacing:.18em;text-transform:uppercase;
+  }
+  .builder-info h3{font-family:var(--display);font-weight:430;font-size:1.75rem;margin:10px 0 2px}
+  .builder-info .town{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);letter-spacing:.06em}
+  .builder-info .bio{margin-top:16px;color:var(--ink-dim);font-size:.97rem;max-width:60ch;white-space:pre-line}
+  .builds{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .builds span{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;
+    border:1px solid var(--line);color:var(--ink-dim);padding:5px 10px;border-radius:99px;background:#fff;
+  }
+  .media-row{border-top:1px solid var(--line);padding:20px 36px 26px;background:#fff}
+  .media-row .media-label{
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;color:var(--ink-faint);margin-bottom:14px;text-transform:uppercase;
+  }
+  .gallery{display:flex;gap:12px;flex-wrap:wrap}
+  .gallery img{
+    height:110px;width:auto;border-radius:5px;border:1px solid var(--line);cursor:zoom-in;transition:transform .2s;
+  }
+  .gallery img:hover{transform:scale(1.03)}
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:14px}
+  .video-grid .vid{aspect-ratio:16/9;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#000}
+  .video-grid iframe,.video-grid video{width:100%;height:100%;border:0}
+  @media(max-width:820px){
+    .builder-top{grid-template-columns:1fr}
+    .builder-photo{min-height:220px}
+    .builder-info,.media-row{padding-left:24px;padding-right:24px}
+  }
+  .empty-note{
+    border:1px dashed var(--line);border-radius:var(--radius);padding:40px;text-align:center;
+    color:var(--ink-faint);font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;
+  }
+
+  /* call for builders */
+  .callout{background:var(--amber-wash);border-bottom:1px solid var(--line)}
+  .callout .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  .callout ul{margin-top:18px;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .callout li{display:flex;gap:12px;color:var(--ink-dim);font-size:.95rem}
+  .callout li::before{content:"—";color:var(--amber);flex-shrink:0}
+  .callout-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px;
+  }
+  .callout-card h3{font-family:var(--display);font-weight:430;font-size:1.3rem;margin-bottom:10px}
+  .callout-card p{font-size:.92rem;color:var(--ink-dim)}
+  .callout-card .contact{margin-top:18px;font-family:var(--mono);font-size:.8rem;line-height:2;color:var(--ink)}
+  @media(max-width:820px){.callout .wrap{grid-template-columns:1fr}}
+
+  /* visit */
+  .visit .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .visit-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:34px}
+  .visit-card h3{font-family:var(--display);font-weight:430;font-size:1.3rem;margin-bottom:18px}
+  .hours{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:.9rem}
+  .hours dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;padding-top:2px}
+  .hours dd{color:var(--ink-dim)}
+  .addr{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-size:.94rem;color:var(--ink-dim);line-height:1.7}
+  .addr strong{color:var(--ink)}
+  @media(max-width:820px){.visit .wrap{grid-template-columns:1fr;gap:36px}}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:38px 0 46px;background:#fff}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+  .foot .mark{font-family:var(--display);font-weight:430;font-size:1.05rem}
+  .foot p{font-family:var(--mono);font-size:.66rem;color:var(--ink-faint);letter-spacing:.08em}
+  .owner-link{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--ink-faint);
+    background:none;border:none;text-decoration:underline;text-underline-offset:3px;
+  }
+  .owner-link:hover{color:var(--amber)}
+
+  /* shop */
+  #shop{border-bottom:1px solid var(--line)}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+  .pill{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+    padding:8px 15px;border-radius:99px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-dim);transition:all .2s;
+  }
+  .pill:hover{border-color:var(--amber);color:var(--amber)}
+  .pill.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+  .product{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .2s,border-color .2s;
+  }
+  .product:hover{transform:translateY(-3px);border-color:rgba(176,117,43,.5)}
+  .product-photo{aspect-ratio:4/3;background:var(--amber-wash);position:relative}
+  .product-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+  .product-photo .placeholder{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;color:var(--amber);
+  }
+  .product-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+  .product .pcat{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--amber);text-transform:uppercase}
+  .product h3{font-family:var(--display);font-weight:430;font-size:1.1rem;margin:8px 0 6px;line-height:1.25}
+  .product .pdesc{font-size:.84rem;color:var(--ink-dim);line-height:1.5}
+  .product .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:16px}
+  .product .price{font-family:var(--display);font-weight:560;font-size:1.1rem}
+  .product .pstatus{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+  .pstatus.s-in{color:var(--ok)}
+  .pstatus.s-low{color:var(--amber-deep)}
+  .pstatus.s-out{color:var(--danger)}
+  .pstatus.s-order{color:var(--ink-faint)}
+
+  /* ---------- admin ---------- */
+  .scrim{
+    position:fixed;inset:0;background:rgba(36,27,18,.45);z-index:90;
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{
+    position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);z-index:100;
+    background:var(--paper);border-left:1px solid var(--line);
+    transform:translateX(100%);transition:transform .3s ease;
+    display:flex;flex-direction:column;
+  }
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;border-bottom:1px solid var(--line);background:#fff;
+  }
+  .drawer-head h3{font-family:var(--display);font-weight:430;font-size:1.15rem}
+  .drawer-head .close{background:none;border:1px solid var(--line);border-radius:5px;width:32px;height:32px;font-size:1rem}
+  .drawer-body{overflow-y:auto;padding:24px;flex:1}
+  .admin-note{
+    font-size:.8rem;color:var(--ink-dim);background:var(--amber-wash);
+    border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:20px;line-height:1.55;
+  }
+  .field{margin-bottom:16px}
+  .field label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:6px}
+  .field input[type=text],.field input[type=password],.field input[type=url],.field textarea,.field select{
+    width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;
+    font-family:var(--body);font-size:.95rem;background:#fff;color:var(--ink);
+  }
+  .admin-sec{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);margin:26px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  .admin-sec:first-of-type{margin-top:0}
+  .field textarea{min-height:110px;resize:vertical}
+  .field .hint{font-size:.74rem;color:var(--ink-faint);margin-top:5px}
+  .file-drop{
+    border:1.5px dashed var(--line);border-radius:6px;padding:16px;text-align:center;
+    font-size:.82rem;color:var(--ink-dim);background:#fff;cursor:pointer;transition:border-color .2s;
+  }
+  .file-drop:hover{border-color:var(--amber)}
+  .thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .thumb{position:relative}
+  .thumb img{height:70px;border-radius:5px;border:1px solid var(--line)}
+  .thumb .rm{
+    position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+    background:var(--danger);color:#fff;border:none;font-size:.75rem;line-height:1;
+  }
+  .vid-list{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+  .vid-item{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px 12px;
+    font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);
+  }
+  .vid-item button{background:none;border:none;color:var(--danger);font-size:.9rem}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .admin-list{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+  .admin-item{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 16px;
+  }
+  .admin-item .who strong{font-family:var(--display);font-weight:560;font-size:1rem}
+  .admin-item .who span{display:block;font-family:var(--mono);font-size:.66rem;color:var(--ink-faint);letter-spacing:.08em}
+  .admin-item .acts{display:flex;gap:8px}
+  .mini{font-size:.74rem;padding:7px 12px;border-radius:5px;border:1px solid var(--line);background:#fff}
+  .mini:hover{border-color:var(--amber);color:var(--amber)}
+  .mini.danger{color:var(--danger)}
+  .mini.danger:hover{border-color:var(--danger)}
+  .toast{
+    position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);
+    background:var(--ink);color:#fff;padding:12px 20px;border-radius:6px;
+    font-size:.85rem;z-index:200;transition:transform .3s;box-shadow:var(--shadow);max-width:90vw;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast.err{background:var(--danger)}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:150;background:rgba(20,14,8,.88);
+    display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out;
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{max-height:88vh;max-width:92vw;border-radius:6px}
+  .divider-line{border:none;border-top:1px solid var(--line);margin:26px 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Onslow Guitar Co. home">
+      <span class="mark">Onslow Guitar Co.</span>
+      <span class="est">JACKSONVILLE · NC</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#builders">Our Builders</a></li>
+      <li><a href="#shop">Gear</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#join">For Luthiers</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="#visit">VISIT THE SHOP →</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Boutique · Handbuilt · Local</p>
+      <h1>Guitars built by <em>local hands,</em> sold by people who know the builder.</h1>
+      <p class="lede">Onslow Guitar Co. is a small storefront in Jacksonville, North Carolina with one rule: we only carry instruments made by luthiers working in Onslow County and the surrounding area. No warehouse stock. No two alike.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#builders">Meet our builders</a>
+        <a class="btn btn-ghost" href="#join">Are you a luthier?</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="strings" aria-hidden="true">
+    <svg viewBox="0 0 1200 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="3" x2="1200" y2="3" stroke="rgba(176,117,43,.5)" stroke-width="2.4"/>
+      <line x1="0" y1="7" x2="1200" y2="7" stroke="rgba(176,117,43,.4)" stroke-width="1.9"/>
+      <line x1="0" y1="10.5" x2="1200" y2="10.5" stroke="rgba(176,117,43,.32)" stroke-width="1.5"/>
+      <line x1="0" y1="13.5" x2="1200" y2="13.5" stroke="rgba(36,27,18,.22)" stroke-width="1.1"/>
+      <line x1="0" y1="16" x2="1200" y2="16" stroke="rgba(36,27,18,.16)" stroke-width=".8"/>
+      <line x1="0" y1="18" x2="1200" y2="18" stroke="rgba(36,27,18,.12)" stroke-width=".5"/>
+    </svg>
+  </div>
+
+  <section id="builders">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Our Builders</p>
+        <h2>The luthiers on our wall</h2>
+        <p>Every builder we carry works within driving distance of the shop, and we've stood in every workshop we buy from. The roster is small on purpose — and growing.</p>
+      </div>
+      <div class="builder-list" id="builderList" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Gear</p>
+        <h2>Everything else you leave with</h2>
+        <p>Amps to plug into, strings and cables to keep you playing, straps and accessories for the road. Everything below is in the store; call to hold an item.</p>
+      </div>
+      <div class="filters" id="shopFilters" role="group" aria-label="Filter products by category"></div>
+      <div class="shop-grid" id="shopGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="merch" style="background:#fff;border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Merch</p>
+        <h2>Wear the shop. Sticker the case.</h2>
+        <p>Hats, tees, shop shirts, mugs, koozies, stickers, magnets, and decals — take a little of Onslow Guitar Co. home even if the guitar has to wait.</p>
+      </div>
+      <div class="shop-grid" id="merchGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="callout" id="join">
+    <div class="wrap">
+      <div>
+        <p class="kicker">For Luthiers</p>
+        <h2>Building in eastern North Carolina? We want your instruments on our wall.</h2>
+        <ul>
+          <li>Consignment or outright purchase — we're flexible while we grow together.</li>
+          <li>Your instruments displayed, humidified, and demoed properly, with your name on the card.</li>
+          <li>A profile on this site with your photos, videos, and story.</li>
+          <li>We handle the retail side so you can stay at the bench.</li>
+        </ul>
+      </div>
+      <div class="callout-card">
+        <h3>Introduce yourself</h3>
+        <p>Send a few photos of your recent work and a little about how you build. New and up-and-coming builders are welcome — that's the point.</p>
+        <p class="contact">
+          hello@onslowguitar.co<br>
+          (910) 555-0164
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div>
+        <div class="sec-head" style="margin-bottom:22px">
+          <p class="kicker">Visit</p>
+          <h2>The shop is quiet on purpose.</h2>
+        </div>
+        <p style="color:var(--ink-dim);max-width:50ch">No sales floor buzz, no roped-off wall. Take an instrument down, find a stool, and play as long as you like. If you want a private hour with a few guitars, call ahead and we'll pull them for you.</p>
+        <div class="hero-actions" style="margin-top:28px">
+          <a class="btn btn-amber" href="tel:+19105550164">Call the shop — (910) 555-0164</a>
+        </div>
+      </div>
+      <div class="visit-card">
+        <h3>Onslow Guitar Co.</h3>
+        <dl class="hours">
+          <dt>Tue – Fri</dt><dd>10 am – 6 pm</dd>
+          <dt>Saturday</dt><dd>10 am – 4 pm</dd>
+          <dt>Sun – Mon</dt><dd>Closed</dd>
+        </dl>
+        <p class="addr">
+          <strong>212 Court Street</strong><br>
+          Jacksonville, North Carolina 28540<br>
+          hello@onslowguitar.co
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p class="mark">Onslow Guitar Co.</p>
+      <p style="margin-top:6px">HANDBUILT INSTRUMENTS · JACKSONVILLE, NC</p>
+    </div>
+    <p>© 2026 ONSLOW GUITAR CO.</p>
+    <button class="owner-link" id="ownerBtn" type="button">Owner sign-in</button>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged photo">
+  <img id="lightboxImg" alt="">
+</div>
+
+<!-- admin drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head">
+    <h3 id="drawerTitle">Owner panel</h3>
+    <button class="close" id="drawerClose" aria-label="Close panel">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- storage layer with in-memory fallback ---------------- */
+  const mem = {};
+  let storageOK = !!(window.storage && window.storage.get);
+
+  async function sGet(key){
+    if(storageOK){
+      try{ const r = await window.storage.get(key, true); return r ? r.value : null; }
+      catch(e){ return null; }
+    }
+    return mem[key] ?? null;
+  }
+  async function sSet(key, value){
+    if(storageOK){
+      try{ const r = await window.storage.set(key, value, true); if(r) return true; }
+      catch(e){ /* fall through */ }
+      // one retry then fallback
+      try{ const r2 = await window.storage.set(key, value, true); if(r2) return true; }
+      catch(e){}
+      mem[key] = value; return false;
+    }
+    mem[key] = value; return true;
+  }
+  async function sDel(key){
+    if(storageOK){
+      try{ await window.storage.delete(key, true); return true; }catch(e){}
+    }
+    delete mem[key]; return true;
+  }
+  async function sList(prefix){
+    if(storageOK){
+      try{ const r = await window.storage.list(prefix, true); return r && r.keys ? r.keys : []; }
+      catch(e){ return []; }
+    }
+    return Object.keys(mem).filter(k=>k.startsWith(prefix));
+  }
+
+  /* ---------------- helpers ---------------- */
+  const $ = s => document.querySelector(s);
+  const el = (tag, cls, text) => { const n=document.createElement(tag); if(cls)n.className=cls; if(text!=null)n.textContent=text; return n; };
+  function toast(msg, isErr){
+    const t=$('#toast'); t.textContent=msg; t.classList.toggle('err',!!isErr); t.classList.add('show');
+    clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'), 3400);
+  }
+  function esc(s){ return String(s||''); } // textContent used everywhere; helper kept for clarity
+  async function sha256(str){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+  /* compress an image File -> dataURL (max 1100px, jpeg) */
+  function compressImage(file){
+    return new Promise((resolve,reject)=>{
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = ()=>{
+        const max=1100;
+        let {width:w,height:h}=img;
+        if(w>max||h>max){ const r=Math.min(max/w,max/h); w=Math.round(w*r); h=Math.round(h*r); }
+        const c=document.createElement('canvas'); c.width=w; c.height=h;
+        c.getContext('2d').drawImage(img,0,0,w,h);
+        URL.revokeObjectURL(url);
+        resolve(c.toDataURL('image/jpeg',0.78));
+      };
+      img.onerror=()=>{ URL.revokeObjectURL(url); reject(new Error('bad image')); };
+      img.src=url;
+    });
+  }
+
+  function parseVideoURL(u){
+    try{
+      const url=new URL(u.trim());
+      const host=url.hostname.replace('www.','');
+      if(host==='youtube.com'||host==='m.youtube.com'){
+        if(url.pathname==='/watch' && url.searchParams.get('v')) return {type:'youtube',id:url.searchParams.get('v')};
+        if(url.pathname.startsWith('/shorts/')) return {type:'youtube',id:url.pathname.split('/')[2]};
+        if(url.pathname.startsWith('/embed/')) return {type:'youtube',id:url.pathname.split('/')[2]};
+      }
+      if(host==='youtu.be') return {type:'youtube',id:url.pathname.slice(1)};
+      if(host==='vimeo.com') return {type:'vimeo',id:url.pathname.split('/').filter(Boolean)[0]};
+    }catch(e){}
+    return null;
+  }
+
+  /* ---------------- data ---------------- */
+  const K_META='ogc-meta', K_PASS='ogc-passhash', PREFIX='ogc-luthier:';
+
+  const seedJustin = {
+    id:'justinjenkins',
+    name:'Justin Jenkins',
+    town:'Jacksonville, North Carolina',
+    county:'Onslow County',
+    tag:'UP & COMING',
+    bio:"Justin is the newest bench on our wall and the builder we're most excited to watch. Working out of his shop right here in Jacksonville, his early instruments already show the two things we look for before anything else — clean joinery and an honest voice — and each build is coming out better than the last. Come play his current work while it's still priced like a beginning.",
+    specialties:['FIRST BUILDS','SMALL BATCH','ASK TO SEE HIS LATEST'],
+    photos:[], videos:[],
+    created: Date.now(), order: 0
+  };
+
+  async function loadLuthiers(){
+    const keys = await sList(PREFIX);
+    if(keys.length===0){
+      const meta = await sGet(K_META);
+      if(!meta){ // first ever run: seed Justin
+        await sSet(PREFIX+seedJustin.id, JSON.stringify(seedJustin));
+        await sSet(K_META, JSON.stringify({seeded:true, at:Date.now()}));
+        return [seedJustin];
+      }
+      return [];
+    }
+    const out=[];
+    for(const k of keys){
+      const raw = await sGet(k);
+      if(raw){ try{ out.push(JSON.parse(raw)); }catch(e){} }
+    }
+    out.sort((a,b)=>(a.order??0)-(b.order??0) || (a.created??0)-(b.created??0));
+    return out;
+  }
+  async function saveLuthier(l){
+    const payload = JSON.stringify(l);
+    if(payload.length > 4.7*1024*1024){
+      toast('That profile is too large to save — remove a photo or use video links instead of uploads.', true);
+      return false;
+    }
+    const ok = await sSet(PREFIX+l.id, payload);
+    if(!ok) toast('Saved for this session only — persistent storage unavailable.', true);
+    return true;
+  }
+
+  /* ---------------- products ---------------- */
+  const P_PREFIX='ogc-product:', K_META_SHOP='ogc-meta-shop';
+  const CATEGORIES=['Amplifiers','Cables','Strings','Straps','Accessories','Merch'];
+  const STATUSES=['In stock','Low stock','Sold out','Special order'];
+
+  const seedProducts=[
+    {name:'15W Hand-Wired Tube Combo', category:'Amplifiers', price:'$649', status:'In stock',
+     desc:'Warm, touch-sensitive, and plenty loud for any stage in the county. Come play through it.'},
+    {name:'5W Practice Tube Amp', category:'Amplifiers', price:'$329', status:'In stock',
+     desc:'Real tube tone at bedroom volume. Our favorite pairing with a handbuilt parlor.'},
+    {name:"Instrument Cable — 15'", category:'Cables', price:'$34', status:'In stock',
+     desc:'Braided jacket, quiet shielding, right-angle option. Lifetime solder-joint repairs at our bench.'},
+    {name:'Phosphor Bronze Strings — Light', category:'Strings', price:'$11', status:'In stock',
+     desc:'Our house pick for the acoustics on the wall. Free install with any setup.'},
+    {name:'Leather Guitar Strap', category:'Straps', price:'$58', status:'Low stock',
+     desc:'Full-grain leather, broken in by playing, not by machines. Ages like a good guitar.'},
+    {name:'Clip-On Tuner', category:'Accessories', price:'$19', status:'In stock',
+     desc:'Small, accurate, and lives in your case pocket.'},
+    {name:'OGC Logo T-Shirt', category:'Merch', price:'$24', status:'In stock',
+     desc:'Soft-washed cotton with the shop mark on the chest. S–3XL.'},
+    {name:'OGC Coffee Mug', category:'Merch', price:'$14', status:'In stock',
+     desc:'Holds the coffee we hand you when you walk in.'},
+    {name:'OGC Koozie', category:'Merch', price:'$6', status:'In stock',
+     desc:'Keeps a cold one cold while you argue about tonewoods.'}
+  ];
+
+  const merchAdditions=[
+    {name:'OGC Trucker Hat', category:'Merch', price:'$22', status:'In stock',
+     desc:'Structured front, mesh back, shop mark stitched on. One size fits most.'},
+    {name:'Shop Work Shirt', category:'Merch', price:'$42', status:'Special order',
+     desc:'The button-up our bench wears, with the OGC patch over the pocket. Tell us your size and we\'ll order it.'},
+    {name:'Sticker Pack', category:'Merch', price:'$5', status:'In stock',
+     desc:'Four weatherproof stickers for the case, the toolbox, or the tailgate.'},
+    {name:'Fridge Magnet', category:'Merch', price:'$4', status:'In stock',
+     desc:'Holds up the setlist. Or the grocery list.'},
+    {name:'Car Decal', category:'Merch', price:'$8', status:'In stock',
+     desc:'Die-cut vinyl shop mark for the back glass. Outdoor-rated.'},
+    {name:'Blueprint Tee', category:'Merch', price:'$26', status:'In stock',
+     desc:'Our luthier\'s guitar-plan drawing printed across the chest. Soft-washed cotton, S–3XL.'},
+    {name:'Tonewood Tee', category:'Merch', price:'$26', status:'In stock',
+     desc:'"Ask me about tonewoods" — fair warning to everyone around you. S–3XL.'},
+    {name:'Kids\' OGC Tee', category:'Merch', price:'$18', status:'In stock',
+     desc:'Shop mark in kid sizes, for the youngest players in the house. 2T–youth XL.'},
+    {name:'Long-Sleeve Shop Tee', category:'Merch', price:'$32', status:'In stock',
+     desc:'The logo tee with sleeves for the cooler months. S–3XL.'}
+  ];
+  const K_META_MERCH='ogc-meta-merch2';
+
+  async function topUpMerch(existing){
+    const flag = await sGet(K_META_MERCH);
+    if(flag) return existing;
+    const have = new Set(existing.map(p=>p.name));
+    let i=0;
+    for(const seed of merchAdditions){
+      if(have.has(seed.name)) continue;
+      const p=Object.assign({id:uid()+(i++), photos:[], created:Date.now()+i, order:100+i}, seed);
+      await sSet(P_PREFIX+p.id, JSON.stringify(p));
+      existing.push(p);
+    }
+    await sSet(K_META_MERCH, JSON.stringify({seeded:true, at:Date.now()}));
+    return existing;
+  }
+
+  async function loadProducts(){
+    const keys = await sList(P_PREFIX);
+    if(keys.length===0){
+      const meta = await sGet(K_META_SHOP);
+      if(!meta){
+        const out=[];
+        for(let i=0;i<seedProducts.length;i++){
+          const p=Object.assign({id:uid()+i, photos:[], created:Date.now()+i, order:i}, seedProducts[i]);
+          await sSet(P_PREFIX+p.id, JSON.stringify(p));
+          out.push(p);
+        }
+        await sSet(K_META_SHOP, JSON.stringify({seeded:true, at:Date.now()}));
+        return topUpMerch(out);
+      }
+      return [];
+    }
+    const out=[];
+    for(const k of keys){
+      const raw = await sGet(k);
+      if(raw){ try{ out.push(JSON.parse(raw)); }catch(e){} }
+    }
+    await topUpMerch(out);
+    out.sort((a,b)=>(a.order??0)-(b.order??0) || (a.created??0)-(b.created??0));
+    return out;
+  }
+  async function saveProduct(p){
+    const payload=JSON.stringify(p);
+    if(payload.length > 4.7*1024*1024){
+      toast('That item is too large to save — remove a photo or two.', true);
+      return false;
+    }
+    const ok = await sSet(P_PREFIX+p.id, payload);
+    if(!ok) toast('Saved for this session only — persistent storage unavailable.', true);
+    return true;
+  }
+
+  /* ---------------- public render ---------------- */
+  function renderBuilders(list){
+    const root=$('#builderList'); root.innerHTML='';
+    if(list.length===0){
+      root.appendChild(el('div','empty-note','BUILDER PROFILES COMING SOON'));
+      return;
+    }
+    for(const L of list){
+      const card=el('article','builder');
+      const top=el('div','builder-top');
+
+      const photoBox=el('div','builder-photo');
+      if(L.photos && L.photos.length){
+        const img=el('img'); img.src=L.photos[0]; img.alt=L.name+' — workshop photo';
+        img.style.cursor='zoom-in';
+        img.addEventListener('click',()=>openLightbox(L.photos[0], L.name));
+        photoBox.appendChild(img);
+      }else{
+        const ph=el('div','placeholder');
+        ph.innerHTML='<svg width="110" height="238" viewBox="0 0 120 260" aria-hidden="true">'
+          +'<defs>'
+          +'<radialGradient id="ogcBurst" cx="50%" cy="58%" r="62%">'
+          +'<stop offset="0%" stop-color="#D6A25C"/>'
+          +'<stop offset="55%" stop-color="#B47B36"/>'
+          +'<stop offset="100%" stop-color="#6E3F16"/>'
+          +'</radialGradient>'
+          +'<linearGradient id="ogcNeck" x1="0" y1="0" x2="1" y2="0">'
+          +'<stop offset="0%" stop-color="#4A3018"/>'
+          +'<stop offset="50%" stop-color="#6B4523"/>'
+          +'<stop offset="100%" stop-color="#3C2712"/>'
+          +'</linearGradient>'
+          +'</defs>'
+          /* body */
+          +'<path d="M60,116 C84,116 92,130 92,142 C92,154 84,158 84,166 C84,176 98,182 98,204 C98,232 82,248 60,248 C38,248 22,232 22,204 C22,182 36,176 36,166 C36,158 28,154 28,142 C28,130 36,116 60,116 Z" fill="url(#ogcBurst)" stroke="#2A1A0C" stroke-width="2.5"/>'
+          /* binding highlight */
+          +'<path d="M60,120 C81,120 88,132 88,142 C88,153 80,157 80,166 C80,177 94,183 94,204 C94,229 80,244 60,244 C40,244 26,229 26,204 C26,183 40,177 40,166 C40,157 32,153 32,142 C32,132 39,120 60,120 Z" fill="none" stroke="#E8D3A8" stroke-width="1" opacity=".5"/>'
+          /* rosette + soundhole */
+          +'<circle cx="60" cy="153" r="19" fill="none" stroke="#E8D3A8" stroke-width="1.4" opacity=".85"/>'
+          +'<circle cx="60" cy="153" r="16.5" fill="none" stroke="#5A3413" stroke-width="2.4"/>'
+          +'<circle cx="60" cy="153" r="14" fill="#1C1106"/>'
+          /* headstock */
+          +'<path d="M51,6 L69,6 L71,38 L49,38 Z" fill="#33200F" stroke="#201307" stroke-width="1"/>'
+          +'<circle cx="45" cy="13" r="2.6" fill="#C9B68E"/><circle cx="45" cy="22" r="2.6" fill="#C9B68E"/><circle cx="45" cy="31" r="2.6" fill="#C9B68E"/>'
+          +'<circle cx="75" cy="13" r="2.6" fill="#C9B68E"/><circle cx="75" cy="22" r="2.6" fill="#C9B68E"/><circle cx="75" cy="31" r="2.6" fill="#C9B68E"/>'
+          /* neck + fretboard */
+          +'<rect x="52" y="38" width="16" height="82" fill="url(#ogcNeck)"/>'
+          +'<rect x="52" y="118" width="16" height="18" fill="#33200F"/>'
+          +'<rect x="51" y="36" width="18" height="3.4" fill="#E8D3A8"/>'
+          +'<g stroke="#C9B68E" stroke-width="1" opacity=".8">'
+          +'<line x1="52" y1="50" x2="68" y2="50"/><line x1="52" y1="61" x2="68" y2="61"/>'
+          +'<line x1="52" y1="72" x2="68" y2="72"/><line x1="52" y1="82" x2="68" y2="82"/>'
+          +'<line x1="52" y1="92" x2="68" y2="92"/><line x1="52" y1="101" x2="68" y2="101"/>'
+          +'<line x1="52" y1="110" x2="68" y2="110"/><line x1="52" y1="118" x2="68" y2="118"/>'
+          +'<line x1="52" y1="126" x2="68" y2="126"/>'
+          +'</g>'
+          +'<circle cx="60" cy="66.5" r="1.7" fill="#E8D3A8"/><circle cx="60" cy="87" r="1.7" fill="#E8D3A8"/>'
+          +'<circle cx="57" cy="105.5" r="1.5" fill="#E8D3A8"/><circle cx="63" cy="105.5" r="1.5" fill="#E8D3A8"/>'
+          /* bridge */
+          +'<rect x="42" y="196" width="36" height="10" rx="2.5" fill="#26170A"/>'
+          +'<line x1="45" y1="199" x2="75" y2="199" stroke="#E8D3A8" stroke-width="1.2"/>'
+          +'<g fill="#C9B68E"><circle cx="47" cy="203" r="1.3"/><circle cx="52.2" cy="203" r="1.3"/><circle cx="57.4" cy="203" r="1.3"/><circle cx="62.6" cy="203" r="1.3"/><circle cx="67.8" cy="203" r="1.3"/><circle cx="73" cy="203" r="1.3"/></g>'
+          /* strings */
+          +'<g stroke="#F1E6D1" stroke-width=".8" opacity=".85">'
+          +'<line x1="55" y1="38" x2="47" y2="199"/><line x1="57" y1="38" x2="52.2" y2="199"/>'
+          +'<line x1="59" y1="38" x2="57.4" y2="199"/><line x1="61" y1="38" x2="62.6" y2="199"/>'
+          +'<line x1="63" y1="38" x2="67.8" y2="199"/><line x1="65" y1="38" x2="73" y2="199"/>'
+          +'</g>'
+          /* soft top highlight */
+          +'<ellipse cx="44" cy="188" rx="14" ry="30" fill="#FFFFFF" opacity=".07"/>'
+          +'</svg>';
+        ph.appendChild(el('span',null,'PHOTOS COMING SOON'));
+        photoBox.appendChild(ph);
+      }
+      top.appendChild(photoBox);
+
+      const info=el('div','builder-info');
+      const countyLine = el('p','county', (L.county||'') + (L.tag ? '   ·   '+L.tag : ''));
+      info.appendChild(countyLine);
+      info.appendChild(el('h3',null,L.name));
+      info.appendChild(el('p','town',(L.town||'').toUpperCase()));
+      info.appendChild(el('p','bio',L.bio||''));
+      if(L.specialties && L.specialties.length){
+        const b=el('div','builds');
+        L.specialties.forEach(s=>b.appendChild(el('span',null,s)));
+        info.appendChild(b);
+      }
+      top.appendChild(info);
+      card.appendChild(top);
+
+      const hasGallery = L.photos && L.photos.length>1;
+      const hasVideos = L.videos && L.videos.length>0;
+      if(hasGallery || hasVideos){
+        const row=el('div','media-row');
+        row.appendChild(el('p','media-label','From the workshop'));
+        if(hasGallery){
+          const g=el('div','gallery');
+          L.photos.slice(1).forEach(src=>{
+            const im=el('img'); im.src=src; im.alt=L.name+' — instrument photo'; im.loading='lazy';
+            im.addEventListener('click',()=>openLightbox(src,L.name));
+            g.appendChild(im);
+          });
+          row.appendChild(g);
+        }
+        if(hasVideos){
+          const vg=el('div','video-grid');
+          L.videos.forEach(v=>{
+            const box=el('div','vid');
+            if(v.type==='youtube'){
+              const f=document.createElement('iframe');
+              f.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(v.id);
+              f.allow='accelerometer; encrypted-media; picture-in-picture'; f.allowFullscreen=true;
+              f.title=L.name+' video';
+              box.appendChild(f);
+            }else if(v.type==='vimeo'){
+              const f=document.createElement('iframe');
+              f.src='https://player.vimeo.com/video/'+encodeURIComponent(v.id);
+              f.allowFullscreen=true; f.title=L.name+' video';
+              box.appendChild(f);
+            }else if(v.type==='file'){
+              const vd=document.createElement('video'); vd.controls=true; vd.src=v.data; vd.preload='metadata';
+              box.appendChild(vd);
+            }
+            vg.appendChild(box);
+          });
+          row.appendChild(vg);
+        }
+        card.appendChild(row);
+      }
+      root.appendChild(card);
+    }
+  }
+
+  /* shop + merch render */
+  let shopFilter='All', shopCache=[];
+  const statusClass={'In stock':'s-in','Low stock':'s-low','Sold out':'s-out','Special order':'s-order'};
+  const gearItems=()=>shopCache.filter(p=>p.category!=='Merch');
+  const merchItems=()=>shopCache.filter(p=>p.category==='Merch');
+
+  function renderFilters(){
+    const root=$('#shopFilters'); root.innerHTML='';
+    const gear=gearItems();
+    const cats=['All',...CATEGORIES.filter(c=>c!=='Merch')];
+    cats.forEach(c=>{
+      const count = c==='All' ? gear.length : gear.filter(p=>p.category===c).length;
+      if(c!=='All' && count===0) return; // hide empty categories
+      const b=el('button','pill'+(shopFilter===c?' active':''), c);
+      b.type='button';
+      b.setAttribute('aria-pressed', shopFilter===c ? 'true':'false');
+      b.addEventListener('click',()=>{ shopFilter=c; renderFilters(); renderShop(); });
+      root.appendChild(b);
+    });
+  }
+
+  function productCard(P){
+    const card=el('article','product');
+    const photo=el('div','product-photo');
+    if(P.photos && P.photos.length){
+      const img=el('img'); img.src=P.photos[0]; img.alt=P.name; img.loading='lazy';
+      img.addEventListener('click',()=>openLightbox(P.photos[0],P.name));
+      photo.appendChild(img);
+    }else{
+      photo.appendChild(el('div','placeholder',(P.category||'ITEM').toUpperCase()));
+    }
+    card.appendChild(photo);
+    const bd=el('div','product-body');
+    bd.appendChild(el('p','pcat',P.category||''));
+    bd.appendChild(el('h3',null,P.name));
+    if(P.desc) bd.appendChild(el('p','pdesc',P.desc));
+    const pr=el('div','price-row');
+    pr.appendChild(el('span','price',P.price||''));
+    pr.appendChild(el('span','pstatus '+(statusClass[P.status]||'s-in'),P.status||'In stock'));
+    bd.appendChild(pr);
+    card.appendChild(bd);
+    return card;
+  }
+
+  function renderShop(){
+    const root=$('#shopGrid'); root.innerHTML='';
+    const gear=gearItems();
+    const items = shopFilter==='All' ? gear : gear.filter(p=>p.category===shopFilter);
+    if(items.length===0){
+      root.appendChild(el('div','empty-note','ITEMS COMING SOON'));
+      return;
+    }
+    items.forEach(P=>root.appendChild(productCard(P)));
+  }
+
+  function renderMerch(){
+    const root=$('#merchGrid'); root.innerHTML='';
+    const items=merchItems();
+    if(items.length===0){
+      root.appendChild(el('div','empty-note','MERCH COMING SOON'));
+      return;
+    }
+    items.forEach(P=>root.appendChild(productCard(P)));
+  }
+
+  function openLightbox(src,alt){
+    $('#lightboxImg').src=src; $('#lightboxImg').alt=alt||'';
+    $('#lightbox').classList.add('open');
+  }
+  $('#lightbox').addEventListener('click',()=>$('#lightbox').classList.remove('open'));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ $('#lightbox').classList.remove('open'); closeDrawer(); }});
+
+  /* ---------------- admin ---------------- */
+  let unlocked=false;
+  const drawer=$('#drawer'), scrim=$('#scrim'), body=$('#drawerBody');
+
+  function openDrawer(){ drawer.classList.add('open'); scrim.classList.add('open'); }
+  function closeDrawer(){ drawer.classList.remove('open'); scrim.classList.remove('open'); }
+  $('#drawerClose').addEventListener('click',closeDrawer);
+  scrim.addEventListener('click',closeDrawer);
+
+  $('#ownerBtn').addEventListener('click', async ()=>{
+    openDrawer();
+    if(unlocked){ renderAdminHome(); return; }
+    const hash = await sGet(K_PASS);
+    if(!hash) renderPassSetup(); else renderPassPrompt();
+  });
+
+  function fieldBlock(labelText, inputEl, hint){
+    const f=el('div','field');
+    const lb=el('label',null,labelText); f.appendChild(lb); f.appendChild(inputEl);
+    if(hint) f.appendChild(el('p','hint',hint));
+    return f;
+  }
+
+  function renderPassSetup(){
+    body.innerHTML='';
+    const note=el('div','admin-note');
+    note.textContent='First-time setup: create an owner passcode. You\'ll use it to add and edit luthier profiles. Note: this is a light gate for a prototype site, not bank-grade security — before a public launch we recommend moving to a host with real login.';
+    body.appendChild(note);
+    const p1=Object.assign(document.createElement('input'),{type:'password',placeholder:'Choose a passcode'});
+    const p2=Object.assign(document.createElement('input'),{type:'password',placeholder:'Repeat it'});
+    body.appendChild(fieldBlock('Create passcode',p1));
+    body.appendChild(fieldBlock('Confirm passcode',p2));
+    const btn=el('button','btn btn-amber','Set passcode & open panel'); btn.type='button';
+    btn.addEventListener('click', async ()=>{
+      if(p1.value.length<4){ toast('Use at least 4 characters.',true); return; }
+      if(p1.value!==p2.value){ toast('Passcodes don\'t match.',true); return; }
+      await sSet(K_PASS, await sha256(p1.value));
+      unlocked=true; toast('Passcode set.'); renderAdminHome();
+    });
+    body.appendChild(btn);
+  }
+
+  function renderPassPrompt(){
+    body.innerHTML='';
+    const p=Object.assign(document.createElement('input'),{type:'password',placeholder:'Owner passcode'});
+    body.appendChild(fieldBlock('Enter passcode',p));
+    const btn=el('button','btn btn-solid','Unlock'); btn.type='button';
+    const go=async ()=>{
+      const hash=await sGet(K_PASS);
+      if(await sha256(p.value)===hash){ unlocked=true; renderAdminHome(); }
+      else toast('Wrong passcode.',true);
+    };
+    btn.addEventListener('click',go);
+    p.addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
+    body.appendChild(btn);
+  }
+
+  async function renderAdminHome(){
+    body.innerHTML='';
+    if(!storageOK){
+      const warn=el('div','admin-note');
+      warn.textContent='Heads up: persistent storage isn\'t available in this environment, so changes will only last for this session.';
+      body.appendChild(warn);
+    }
+
+    /* builders */
+    body.appendChild(el('p','admin-sec','Builders'));
+    const list=await loadLuthiers();
+    const wrap=el('div','admin-list');
+    if(list.length===0) wrap.appendChild(el('p','hint','No builders yet.'));
+    for(const L of list){
+      const item=el('div','admin-item');
+      const who=el('div','who');
+      who.appendChild(el('strong',null,L.name));
+      who.appendChild(el('span',null,(L.town||'')+' · '+(L.photos?.length||0)+' PHOTOS · '+(L.videos?.length||0)+' VIDEOS'));
+      item.appendChild(who);
+      const acts=el('div','acts');
+      const ed=el('button','mini','Edit'); ed.type='button';
+      ed.addEventListener('click',()=>renderForm(L));
+      const del=el('button','mini danger','Delete'); del.type='button';
+      del.addEventListener('click',async ()=>{
+        if(!confirm('Remove '+L.name+' from the website? This can\'t be undone.')) return;
+        await sDel(PREFIX+L.id);
+        toast(L.name+' removed.');
+        refreshPublic(); renderAdminHome();
+      });
+      acts.appendChild(ed); acts.appendChild(del); item.appendChild(acts);
+      wrap.appendChild(item);
+    }
+    body.appendChild(wrap);
+    const add=el('button','btn btn-amber','+ Add a luthier'); add.type='button';
+    add.addEventListener('click',()=>renderForm(null));
+    body.appendChild(add);
+
+    /* shop items */
+    body.appendChild(el('p','admin-sec','Gear & Merch'));
+    const prods=await loadProducts();
+    const pwrap=el('div','admin-list');
+    if(prods.length===0) pwrap.appendChild(el('p','hint','No items yet.'));
+    for(const P of prods){
+      const item=el('div','admin-item');
+      const who=el('div','who');
+      who.appendChild(el('strong',null,P.name));
+      who.appendChild(el('span',null,(P.category||'').toUpperCase()+' · '+(P.price||'—')+' · '+(P.status||'In stock').toUpperCase()));
+      item.appendChild(who);
+      const acts=el('div','acts');
+      const ed=el('button','mini','Edit'); ed.type='button';
+      ed.addEventListener('click',()=>renderProductForm(P));
+      const del=el('button','mini danger','Delete'); del.type='button';
+      del.addEventListener('click',async ()=>{
+        if(!confirm('Remove "'+P.name+'" from the shop? This can\'t be undone.')) return;
+        await sDel(P_PREFIX+P.id);
+        toast('"'+P.name+'" removed.');
+        refreshPublic(); renderAdminHome();
+      });
+      acts.appendChild(ed); acts.appendChild(del); item.appendChild(acts);
+      pwrap.appendChild(item);
+    }
+    body.appendChild(pwrap);
+    const addP=el('button','btn btn-amber','+ Add a shop item'); addP.type='button';
+    addP.addEventListener('click',()=>renderProductForm(null));
+    body.appendChild(addP);
+  }
+
+  function renderProductForm(existing){
+    body.innerHTML='';
+    const P = existing ? JSON.parse(JSON.stringify(existing)) : {
+      id:uid(), name:'', category:CATEGORIES[0], price:'', status:STATUSES[0], desc:'',
+      photos:[], created:Date.now(), order:Date.now()
+    };
+
+    const back=el('button','mini','← Back to list'); back.type='button'; back.style.marginBottom='18px';
+    back.addEventListener('click',renderAdminHome);
+    body.appendChild(back);
+
+    const name=Object.assign(document.createElement('input'),{type:'text',value:P.name,placeholder:'OGC Logo T-Shirt'});
+    const cat=document.createElement('select');
+    CATEGORIES.forEach(c=>{ const o=el('option',null,c); o.value=c; if(P.category===c)o.selected=true; cat.appendChild(o); });
+    const price=Object.assign(document.createElement('input'),{type:'text',value:P.price||'',placeholder:'$24'});
+    const status=document.createElement('select');
+    STATUSES.forEach(s=>{ const o=el('option',null,s); o.value=s; if(P.status===s)o.selected=true; status.appendChild(o); });
+    const desc=document.createElement('textarea'); desc.value=P.desc||''; desc.style.minHeight='80px';
+    desc.placeholder='One or two sentences shown on the card…';
+
+    body.appendChild(fieldBlock('Item name *',name));
+    body.appendChild(fieldBlock('Category *',cat));
+    body.appendChild(fieldBlock('Price',price,'Free-form — "$24", "$649", "From $58", etc.'));
+    body.appendChild(fieldBlock('Availability',status));
+    body.appendChild(fieldBlock('Description',desc));
+
+    body.appendChild(el('hr','divider-line'));
+    const photoField=el('div','field');
+    photoField.appendChild(el('label',null,'Photos (up to 4 — first one shows on the card)'));
+    const drop=el('div','file-drop','Click to choose photos — they\'re resized automatically');
+    const fileIn=Object.assign(document.createElement('input'),{type:'file',accept:'image/*',multiple:true});
+    fileIn.style.display='none';
+    drop.addEventListener('click',()=>fileIn.click());
+    const thumbs=el('div','thumbs');
+    function drawThumbs(){
+      thumbs.innerHTML='';
+      P.photos.forEach((src,i)=>{
+        const t=el('div','thumb');
+        const im=el('img'); im.src=src; im.alt='Photo '+(i+1); t.appendChild(im);
+        const rm=el('button','rm','✕'); rm.type='button'; rm.title='Remove photo';
+        rm.addEventListener('click',()=>{ P.photos.splice(i,1); drawThumbs(); });
+        t.appendChild(rm); thumbs.appendChild(t);
+      });
+    }
+    fileIn.addEventListener('change',async ()=>{
+      for(const f of fileIn.files){
+        if(P.photos.length>=4){ toast('Photo limit is 4 per item.',true); break; }
+        try{ P.photos.push(await compressImage(f)); }
+        catch(e){ toast('Couldn\'t read one of the images.',true); }
+      }
+      fileIn.value=''; drawThumbs();
+    });
+    drawThumbs();
+    photoField.appendChild(drop); photoField.appendChild(fileIn); photoField.appendChild(thumbs);
+    body.appendChild(photoField);
+
+    body.appendChild(el('hr','divider-line'));
+    const save=el('button','btn btn-amber', existing ? 'Save changes' : 'Add to shop'); save.type='button';
+    save.addEventListener('click',async ()=>{
+      if(!name.value.trim()){ toast('The item needs a name.',true); return; }
+      P.name=name.value.trim(); P.category=cat.value; P.price=price.value.trim();
+      P.status=status.value; P.desc=desc.value.trim();
+      save.disabled=true; save.textContent='Saving…';
+      const ok=await saveProduct(P);
+      save.disabled=false; save.textContent= existing?'Save changes':'Add to shop';
+      if(ok){ toast('"'+P.name+'" saved.'); refreshPublic(); renderAdminHome(); }
+    });
+    body.appendChild(save);
+  }
+
+  function renderForm(existing){
+    body.innerHTML='';
+    const L = existing ? JSON.parse(JSON.stringify(existing)) : {
+      id:uid(), name:'', town:'', county:'', tag:'', bio:'', specialties:[], photos:[], videos:[],
+      created:Date.now(), order:Date.now()
+    };
+
+    const back=el('button','mini','← Back to list'); back.type='button'; back.style.marginBottom='18px';
+    back.addEventListener('click',renderAdminHome);
+    body.appendChild(back);
+
+    const name=Object.assign(document.createElement('input'),{type:'text',value:L.name,placeholder:'Justin Jenkins'});
+    const town=Object.assign(document.createElement('input'),{type:'text',value:L.town,placeholder:'Jacksonville, North Carolina'});
+    const county=Object.assign(document.createElement('input'),{type:'text',value:L.county,placeholder:'Onslow County'});
+    const tag=Object.assign(document.createElement('input'),{type:'text',value:L.tag||'',placeholder:'UP & COMING (optional badge)'});
+    const bio=document.createElement('textarea'); bio.value=L.bio||''; bio.placeholder='Their story, how they build, what their instruments sound like…';
+    const specs=Object.assign(document.createElement('input'),{type:'text',value:(L.specialties||[]).join(', '),placeholder:'OM, DREADNOUGHT, 12-FRET'});
+
+    body.appendChild(fieldBlock('Name *',name));
+    body.appendChild(fieldBlock('Town *',town));
+    body.appendChild(fieldBlock('County',county));
+    body.appendChild(fieldBlock('Badge',tag,'Short label shown next to the county, e.g. UP & COMING or NEW BENCH.'));
+    body.appendChild(fieldBlock('Bio *',bio));
+    body.appendChild(fieldBlock('Specialties',specs,'Comma-separated. Shown as small pills on the profile.'));
+
+    /* photos */
+    body.appendChild(el('hr','divider-line'));
+    const photoField=el('div','field');
+    photoField.appendChild(el('label',null,'Photos (first one is the main portrait)'));
+    const drop=el('div','file-drop','Click to choose photos — they\'re resized automatically (up to 6)');
+    const fileIn=Object.assign(document.createElement('input'),{type:'file',accept:'image/*',multiple:true});
+    fileIn.style.display='none';
+    drop.addEventListener('click',()=>fileIn.click());
+    const thumbs=el('div','thumbs');
+    function drawThumbs(){
+      thumbs.innerHTML='';
+      L.photos.forEach((src,i)=>{
+        const t=el('div','thumb');
+        const im=el('img'); im.src=src; im.alt='Photo '+(i+1); t.appendChild(im);
+        const rm=el('button','rm','✕'); rm.type='button'; rm.title='Remove photo';
+        rm.addEventListener('click',()=>{ L.photos.splice(i,1); drawThumbs(); });
+        t.appendChild(rm); thumbs.appendChild(t);
+      });
+    }
+    fileIn.addEventListener('change',async ()=>{
+      for(const f of fileIn.files){
+        if(L.photos.length>=6){ toast('Photo limit is 6 per builder.',true); break; }
+        try{ L.photos.push(await compressImage(f)); }
+        catch(e){ toast('Couldn\'t read one of the images.',true); }
+      }
+      fileIn.value=''; drawThumbs();
+    });
+    drawThumbs();
+    photoField.appendChild(drop); photoField.appendChild(fileIn); photoField.appendChild(thumbs);
+    body.appendChild(photoField);
+
+    /* videos */
+    body.appendChild(el('hr','divider-line'));
+    const vidField=el('div','field');
+    vidField.appendChild(el('label',null,'Videos'));
+    const vurl=Object.assign(document.createElement('input'),{type:'url',placeholder:'Paste a YouTube or Vimeo link'});
+    vidField.appendChild(vurl);
+    const row=el('div','row');
+    const addV=el('button','mini','Add video link'); addV.type='button';
+    const upV=el('button','mini','Upload small video file (≤3 MB)'); upV.type='button';
+    const vfile=Object.assign(document.createElement('input'),{type:'file',accept:'video/*'}); vfile.style.display='none';
+    row.appendChild(addV); row.appendChild(upV); vidField.appendChild(row); vidField.appendChild(vfile);
+    vidField.appendChild(el('p','hint','YouTube/Vimeo links are strongly recommended — direct uploads are limited to short clips by storage size.'));
+    const vlist=el('div','vid-list');
+    function drawVids(){
+      vlist.innerHTML='';
+      (L.videos||[]).forEach((v,i)=>{
+        const it=el('div','vid-item');
+        it.appendChild(el('span',null, v.type==='file' ? 'UPLOADED CLIP ('+(v.label||'video')+')' : v.type.toUpperCase()+' · '+v.id));
+        const rm=el('button',null,'✕'); rm.type='button'; rm.title='Remove video';
+        rm.addEventListener('click',()=>{ L.videos.splice(i,1); drawVids(); });
+        it.appendChild(rm); vlist.appendChild(it);
+      });
+    }
+    addV.addEventListener('click',()=>{
+      const p=parseVideoURL(vurl.value);
+      if(!p){ toast('That doesn\'t look like a YouTube or Vimeo link.',true); return; }
+      L.videos.push(p); vurl.value=''; drawVids();
+    });
+    upV.addEventListener('click',()=>vfile.click());
+    vfile.addEventListener('change',()=>{
+      const f=vfile.files[0]; if(!f) return;
+      if(f.size>3*1024*1024){ toast('That video is over 3 MB. Upload it to YouTube and paste the link instead.',true); vfile.value=''; return; }
+      const r=new FileReader();
+      r.onload=()=>{ L.videos.push({type:'file',data:r.result,label:f.name}); drawVids(); };
+      r.readAsDataURL(f);
+      vfile.value='';
+    });
+    drawVids();
+    vidField.appendChild(vlist);
+    body.appendChild(vidField);
+
+    body.appendChild(el('hr','divider-line'));
+    const save=el('button','btn btn-amber', existing ? 'Save changes' : 'Add to website'); save.type='button';
+    save.addEventListener('click',async ()=>{
+      if(!name.value.trim()||!town.value.trim()||!bio.value.trim()){ toast('Name, town, and bio are required.',true); return; }
+      L.name=name.value.trim(); L.town=town.value.trim(); L.county=county.value.trim();
+      L.tag=tag.value.trim(); L.bio=bio.value.trim();
+      L.specialties=specs.value.split(',').map(s=>s.trim().toUpperCase()).filter(Boolean);
+      save.disabled=true; save.textContent='Saving…';
+      const ok=await saveLuthier(L);
+      save.disabled=false; save.textContent= existing?'Save changes':'Add to website';
+      if(ok){ toast(L.name+' saved to the website.'); refreshPublic(); renderAdminHome(); }
+    });
+    body.appendChild(save);
+  }
+
+  /* ---------------- boot ---------------- */
+  async function refreshPublic(){
+    renderBuilders(await loadLuthiers());
+    shopCache = await loadProducts();
+    renderFilters(); renderShop(); renderMerch();
+  }
+  (async function init(){
+    // probe storage once, since window.storage may exist but fail
+    if(storageOK){
+      try{ await window.storage.list('ogc-probe', true); }
+      catch(e){ /* list on empty prefix may throw in some impls; keep enabled and rely on per-call fallback */ }
+    }
+    refreshPublic();
+  })();
+})();
+</script>
+</body>
+</html>
