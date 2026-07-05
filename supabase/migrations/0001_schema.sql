@@ -41,7 +41,7 @@ create table if not exists public.products (
   id          uuid primary key default gen_random_uuid(),
   name        text not null,
   category    text not null check (category in
-    ('Amplifiers', 'Cables', 'Strings', 'Straps', 'Accessories', 'Merch')),
+    ('Amplifiers', 'Speaker Cabinets', 'Cables', 'Strings', 'Straps', 'Accessories', 'Merch')),
   price       text not null default '',
   status      text not null default 'In stock' check (status in
     ('In stock', 'Low stock', 'Sold out', 'Special order')),

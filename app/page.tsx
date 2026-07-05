@@ -5,7 +5,7 @@ import { BuilderCard } from "@/components/BuilderCard";
 import { GearSection } from "@/components/GearSection";
 import { ProductCard } from "@/components/ProductCard";
 import { getLuthiers, getProducts } from "@/lib/data";
-import { SITE } from "@/lib/types";
+import { AMP_CATEGORIES, SITE } from "@/lib/types";
 
 // Re-generate at most every 5 minutes; admin saves also revalidate on demand.
 export const revalidate = 300;
@@ -51,6 +51,9 @@ export default async function HomePage() {
     getProducts(),
   ]);
   const merch = products.filter((p) => p.category === "Merch");
+  const ampsAndCabs = products.filter((p) =>
+    AMP_CATEGORIES.includes(p.category)
+  );
 
   return (
     <>
@@ -109,15 +112,37 @@ export default async function HomePage() {
           </div>
         </section>
 
+        <section id="amps" className="shop-section">
+          <div className="wrap">
+            <div className="sec-head">
+              <p className="kicker">Amps &amp; Cabs</p>
+              <h2>Hand-wired amps. Homemade cabinets.</h2>
+              <p>
+                Point-to-point tube amps and speaker cabinets built the same
+                way the guitars on our wall are — by local hands, one at a
+                time. Plug into any of them and hear what a soldering iron
+                and real wood do for your tone.
+              </p>
+            </div>
+            <div className="shop-grid">
+              {ampsAndCabs.length === 0 ? (
+                <div className="empty-note">AMPS &amp; CABS COMING SOON</div>
+              ) : (
+                ampsAndCabs.map((p) => <ProductCard key={p.id} product={p} />)
+              )}
+            </div>
+          </div>
+        </section>
+
         <section id="shop" className="shop-section">
           <div className="wrap">
             <div className="sec-head">
               <p className="kicker">Gear</p>
               <h2>Everything else you leave with</h2>
               <p>
-                Amps to plug into, strings and cables to keep you playing,
-                straps and accessories for the road. Everything below is in
-                the store; call to hold an item.
+                Strings and cables to keep you playing, straps and
+                accessories for the road. Everything below is in the store;
+                call to hold an item.
               </p>
             </div>
             <GearSection products={products} />

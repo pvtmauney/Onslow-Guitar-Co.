@@ -48,9 +48,11 @@ On a builder's page, under **Videos**:
 ## Adding gear or merch
 
 1. Click **+ Add a shop item**.
-2. Give it a **name**, pick a **category** (Amplifiers, Cables, Strings,
-   Straps, Accessories — or **Merch** for shirts, hats, mugs, koozies,
-   stickers, magnets, and decals).
+2. Give it a **name**, pick a **category** (Amplifiers, Speaker Cabinets,
+   Cables, Strings, Straps, Accessories — or **Merch** for shirts, hats,
+   mugs, koozies, stickers, magnets, and decals).
+   **Amplifiers and Speaker Cabinets get their own "Amps & Cabs" section**
+   on the site — that's the spot for hand-wired amps and homemade cabinets.
 3. **Price** is free-form: `$24`, `From $58`, whatever reads right.
 4. Pick **availability**: In stock, Low stock, Sold out, or Special order.
    (When something sells, just change this — no need to delete the item.)

@@ -15,13 +15,21 @@ values (
   0
 );
 
-/* -------------------------------- gear --------------------------------- */
+/* --------------------------- amps & cabinets --------------------------- */
 
 insert into public.products (name, category, price, status, description, sort_order) values
   ('15W Hand-Wired Tube Combo', 'Amplifiers', '$649', 'In stock',
    'Warm, touch-sensitive, and plenty loud for any stage in the county. Come play through it.', 0),
   ('5W Practice Tube Amp', 'Amplifiers', '$329', 'In stock',
    'Real tube tone at bedroom volume. Our favorite pairing with a handbuilt parlor.', 1),
+  ('1x12 Pine Speaker Cabinet', 'Speaker Cabinets', '$289', 'In stock',
+   'Solid pine, finger-jointed and open-backed, built a few miles from the shop. Light on the shoulder, big in the room.', 18),
+  ('2x12 Closed-Back Cabinet', 'Speaker Cabinets', 'From $449', 'Special order',
+   'Built to order in the wood and tolex you want, loaded or unloaded. Tell us what you''re chasing and we''ll spec it together.', 19);
+
+/* -------------------------------- gear --------------------------------- */
+
+insert into public.products (name, category, price, status, description, sort_order) values
   ('Instrument Cable — 15''', 'Cables', '$34', 'In stock',
    'Braided jacket, quiet shielding, right-angle option. Lifetime solder-joint repairs at our bench.', 2),
   ('Phosphor Bronze Strings — Light', 'Strings', '$11', 'In stock',

@@ -8,6 +8,7 @@ export function Header() {
         </a>
         <ul className="nav-links">
           <li><a href="#builders">Our Builders</a></li>
+          <li><a href="#amps">Amps &amp; Cabs</a></li>
           <li><a href="#shop">Gear</a></li>
           <li><a href="#merch">Merch</a></li>
           <li><a href="#join">For Luthiers</a></li>

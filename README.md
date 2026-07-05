@@ -33,8 +33,10 @@ In the Supabase dashboard, open **SQL Editor** and run these files in order
 1. `supabase/migrations/0001_schema.sql` — tables + row-level security
 2. `supabase/migrations/0002_storage.sql` — the public `media` storage bucket
    and its policies
-3. `supabase/seed.sql` — seeds Justin Jenkins and all gear/merch items from
-   the prototype (run this **once**)
+3. `supabase/migrations/0003_speaker_cabinets.sql` — only needed if you ran
+   0001 before the Speaker Cabinets category existed; harmless to run anyway
+4. `supabase/seed.sql` — seeds Justin Jenkins and all amp/cab, gear, and
+   merch items from the prototype (run this **once**)
 
 (If you prefer the Supabase CLI: `supabase link`, then `supabase db push`,
 then run the seed with `supabase db execute --file supabase/seed.sql`.)

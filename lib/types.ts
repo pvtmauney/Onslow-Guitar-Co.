@@ -1,5 +1,6 @@
 export const CATEGORIES = [
   "Amplifiers",
+  "Speaker Cabinets",
   "Cables",
   "Strings",
   "Straps",
@@ -7,6 +8,12 @@ export const CATEGORIES = [
   "Merch",
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
+
+/** Categories shown in the dedicated "Amps & Cabs" section (not the gear grid). */
+export const AMP_CATEGORIES: readonly Category[] = [
+  "Amplifiers",
+  "Speaker Cabinets",
+];
 
 export const STATUSES = [
   "In stock",
