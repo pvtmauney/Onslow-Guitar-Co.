@@ -12,6 +12,9 @@ export function Footer() {
           </p>
         </div>
         <p>© {new Date().getFullYear()} ONSLOW GUITAR CO.</p>
+        <a className="owner-link" href="mailto:pvtmauney@gmail.com">
+          Site by Brice Mauney
+        </a>
         <Link className="owner-link" href="/admin">
           Owner sign-in
         </Link>
